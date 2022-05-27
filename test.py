@@ -20,7 +20,7 @@ segment = "BODY CLEANSING"
 company_col = "COMPANY (HARMONIZED)"
 company = "P&G"
 
-st.header('Latest Update)
+st.header('Latest Update')
 option = st.radio(
     'Select Cell',
     ('Global', 'USA', 'India', 'China'))       
