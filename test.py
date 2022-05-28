@@ -18,7 +18,6 @@ country = "USA"
 segment = "FACE CARE"
 
 company_col = "COMPANY (HARMONIZED)"
-company = "P&G"
 
 st.header('Latest Update')
 option = st.radio(
@@ -52,33 +51,7 @@ if option == 'USA':
                  'MAT-1': [economy_py, mass_py, premium_py, masstige_py, total_py],
                  'MAT': [economy_ty, mass_ty, premium_ty, masstige_ty, total_ty]}
     df3 = pd.DataFrame(market)
-
-    company_masstige_ty = df2.loc[(df2[ty_tier] == "MASSTIGE 200+") & (df2[company_col] == company), ty_sales].sum()
-    company_premium_ty = df2.loc[(df2[ty_tier] == "PREMIUM 120-200") & (df2[company_col] == company), ty_sales].sum()
-    company_mass_ty = df2.loc[(df2[ty_tier] == "MASS 80-120") & (df2[company_col] == company), ty_sales].sum()
-    company_economy_ty = df2.loc[(df2[ty_tier] == "ECONOMY< 80") & (df2[company_col] == company), ty_sales].sum()
-    company_total_ty = company_masstige_ty + company_premium_ty + company_mass_ty + company_economy_ty
-    company_masstige_py = df2.loc[(df2[py_tier] == "MASSTIGE 200+") & (df2[company_col] == company), py_sales].sum()
-    company_premium_py = df2.loc[(df2[py_tier] == "PREMIUM 120-200") & (df2[company_col] == company), py_sales].sum()
-    company_mass_py = df2.loc[(df2[py_tier] == "MASS 80-120") & (df2[company_col] == company), py_sales].sum()
-    company_economy_py = df2.loc[(df2[py_tier] == "ECONOMY< 80") & (df2[company_col] == company), py_sales].sum()
-    company_total_py = company_masstige_py + company_premium_py + company_mass_py + company_economy_py
-    company_masstige_ppy = df2.loc[(df2[ppy_tier] == "MASSTIGE 200+") & (df2[company_col] == company), ppy_sales].sum()
-    company_premium_ppy = df2.loc[(df2[ppy_tier] == "PREMIUM 120-200") & (df2[company_col] == company), ppy_sales].sum()
-    company_mass_ppy = df2.loc[(df2[ppy_tier] == "MASS 80-120") & (df2[company_col] == company), ppy_sales].sum()
-    company_economy_ppy = df2.loc[(df2[ppy_tier] == "ECONOMY< 80") & (df2[company_col] == company), ppy_sales].sum()
-    company_total_ppy = company_masstige_ppy + company_premium_ppy + company_mass_ppy + company_economy_ppy
-
-    company = {'Price Tier':['Economy', 'Mass', 'Premium', 'Masstige', 'Total'],
-                 'MAT-2': [company_economy_ppy, company_mass_ppy, company_premium_ppy, company_masstige_ppy, company_total_ppy],
-                 'MAT-1': [company_economy_py, company_mass_py, company_premium_py, company_masstige_py, company_total_py],
-                 'MAT': [company_economy_ty, company_mass_ty, company_premium_ty, company_masstige_ty, company_total_ty]}
-    df4 = pd.DataFrame(company)
-
-    df3.set_index('Price Tier', inplace=True)
-    df4.set_index('Price Tier', inplace=True)
-    share = (df4.div(df3).reset_index())
-    st.write("Company Share", share)
+    st.write(market)
 
 if option == 'India':
     st.write("Under Construction")
