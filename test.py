@@ -13,9 +13,9 @@ ty_sales = 'Value Sales MAT 2022'
 py_sales = 'Value Sales MAT 2021'
 ppy_sales = 'Value Sales MAT 2020'
 
-category = "SKIN CLEANSING"
+category = "SKIN CARE"
 country = "USA"
-segment = "BODY CLEANSING"
+segment = "FACE CARE"
 
 company_col = "COMPANY (HARMONIZED)"
 company = "P&G"
@@ -79,19 +79,6 @@ if option == 'USA':
     df4.set_index('Price Tier', inplace=True)
     share = (df4.div(df3).reset_index())
     st.write("Company Share", share)
-
-    premium_plus_ty = masstige_ty + premium_ty
-    premium_plus_py = masstige_py + premium_py
-    premium_plus_ppy = masstige_ppy + premium_ppy
-    company_premium_plus_ty = company_masstige_ty + company_premium_ty
-    company_premium_plus_py = company_masstige_py + company_premium_py
-    company_premium_plus_ppy = company_masstige_ppy + company_premium_ppy
-
-    df3_premium_plus = (df3.loc['Premium'] + df3.loc['Masstige']) / df3.loc['Total']
-    df4_premium_plus = (df4.loc['Premium'] + df4.loc['Masstige']) / df4.loc['Total']
-
-    pmsi = df4_premium_plus / df3_premium_plus * 100
-    st.write("Company PMSI", pmsi)
 
 if option == 'India':
     st.write("Under Construction")
