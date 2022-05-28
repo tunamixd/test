@@ -18,9 +18,6 @@ country = "USA"
 segment = "FACE CARE"
 company_col = "COMPANY (HARMONIZED)"
 
-df = pd.read_sql_query('SELECT * FROM q1_2022', conn)
-df = pd.DataFrame(df, columns = ['COUNTRY', 'CATEGORY', 'HARMONISED SEGMENT', company_col, ppy_tier, py_tier, ty_tier, ppy_sales, py_sales, ty_sales])
-
 st.header('Latest Update')
 option = st.radio(
     'Select Cell',
@@ -28,7 +25,9 @@ option = st.radio(
 if option == 'Global':
     st.write("Select Option")
 if option == 'USA':
-  
+
+    df = pd.read_sql_query('SELECT * FROM q1_2022', conn)
+    df = pd.DataFrame(df, columns = ['COUNTRY', 'CATEGORY', 'HARMONISED SEGMENT', company_col, ppy_tier, py_tier, ty_tier, ppy_sales, py_sales, ty_sales])
     df2 = df.loc[(df['CATEGORY'] == category) & (df['COUNTRY'] == country) & (df['HARMONISED SEGMENT'] == segment)]
 
     masstige_ty = df2.loc[df2[ty_tier] == "MASSTIGE 200+", ty_sales].sum()
